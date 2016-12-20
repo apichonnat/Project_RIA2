@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Customers;
+use App\Models\Driver;
+
 
 class IndexController extends Controller
 {
@@ -17,9 +19,12 @@ class IndexController extends Controller
     {
         $isLoggedIn = \Auth::check();
         $clients = Customers::all();
+        $drivers = Driver::all();
+
         return view('index')
             ->with('isLoggedIn', $isLoggedIn)
-            ->with('clients', $clients);
+            ->with('clients', $clients)
+            ->with('drivers', $drivers);
     }
 
     public function login()
@@ -46,4 +51,5 @@ class IndexController extends Controller
 //      ->with('isLoggedIn', $isLoggedIn)
 //      ->with('user',\Auth::user()->getUserInfo());
     }
+
 }

@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/', ['as' => 'home', 'uses' => 'IndexController@index'])->middleware('auth');
 Route::get('/login', ['as' => 'login', 'uses' => 'IndexController@login']);
@@ -21,4 +18,6 @@ Route::get('/logout', ['as' => 'logout', 'uses' => 'IndexController@logout'])->m
 Route::get('/dump', ['as' => 'dump', 'uses' => 'IndexController@dump', 'middleware' => 'auth'])->middleware('auth');
 
 Route::get('/callback', ['as' => 'logincallback', 'uses' => '\Auth0\Login\Auth0Controller@callback']);
+
+Route::post('/route', ['as' => 'route', 'uses' => 'RouteController@route', 'middleware' => 'auth'])->middleware('auth');
 

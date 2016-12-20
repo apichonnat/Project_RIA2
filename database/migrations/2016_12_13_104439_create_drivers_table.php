@@ -15,7 +15,7 @@ class CreateDriversTable extends Migration
     {
         Schema::create('drivers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('license_number')->unique();
+            $table->string('license_number')->unique();
             $table->timestamps();
         });
     }
