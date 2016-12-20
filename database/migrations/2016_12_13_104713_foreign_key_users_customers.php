@@ -27,7 +27,7 @@ class ForeignKeyUsersCustomers extends Migration
     public function down()
     {
         Schema::table('customers', function(Blueprint $table){
-            $table->dropForeign('costumers_user_id_foreign');
+            $table->dropForeign('customers_user_id_foreign');
             $table->dropColumn('user_id');
         });
     }

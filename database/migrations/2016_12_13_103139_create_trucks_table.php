@@ -17,7 +17,7 @@ class CreateTrucksTable extends Migration
             $table->increments('id');
             $table->integer('plate_number');
             $table->string('canton');
-            $table->text('commantaire');
+            $table->text('comment');
             $table->timestamps();
         });
     }
