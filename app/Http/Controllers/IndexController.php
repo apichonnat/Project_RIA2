@@ -10,10 +10,10 @@ use App\Models\Driver;
 class IndexController extends Controller
 {
 
-  public function __construct()
-  {
+    public function __construct()
+    {
 
-  }
+    }
 
     public function index()
     {
@@ -36,11 +36,11 @@ class IndexController extends Controller
             ->with('auth0Config',$auth0Config);
     }
 
-  public function logout() 
-  {
-    \Auth::logout();
-    return  \Redirect::intended('/');
-  }
+    public function logout()
+    {
+        \Auth::logout();
+        return  \Redirect::intended('/');
+    }
 
     public function dump()
     {

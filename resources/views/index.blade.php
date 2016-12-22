@@ -7,7 +7,7 @@
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <div class="form-group">
                     <label for="Client1">Chauffeur</label>
-                    <select class="form-control" name="driver" id="Client1">
+                    <select class="form-control" name="driver" id="driver">
                         @foreach($drivers as $driver)
                             <option value="{{$driver->id}}">{{$driver->user->getLabel()}}</option>
                         @endforeach
@@ -15,7 +15,7 @@
                 </div>
                 <div class="form-group">
                     <label for="Client1">Client 1</label>
-                    <select class="form-control" name="Client1" id="Client1">
+                    <select class="form-control" name="client1" id="client1">
                         <option value="0"></option>
                         @foreach($clients as $client)
                             <option value="{{$client->id}}">{{$client->user->getLabel()}}</option>
@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-group">
                     <label for="Client1">Client 2</label>
-                    <select class="form-control" name="Client1" id="Client1">
+                    <select class="form-control" name="client2" id="client1">
                         <option value="0"></option>
                         @foreach($clients as $client)
                             <option value="{{$client->id}}">{{$client->user->getLabel()}}</option>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="form-group">
                     <label for="Client1">Client 3</label>
-                    <select class="form-control" name="Client1" id="Client1">
+                    <select class="form-control" name="client3" id="client1">
                         <option value="0"></option>
                         @foreach($clients as $client)
                             <option value="{{$client->id}}">{{$client->user->getLabel()}}</option>
@@ -42,7 +42,7 @@
                 </div>
                 <div class="form-group">
                     <label for="Client1">Client 4</label>
-                    <select class="form-control" name="Client1" id="Client1">
+                    <select class="form-control" name="client4" id="client1">
                         <option value="0"></option>
                         @foreach($clients as $client)
                             <option value="{{$client->id}}">{{$client->user->getLabel()}}</option>
@@ -51,7 +51,7 @@
                 </div>
                 <div class="form-group">
                     <label for="Client1">Client 5</label>
-                    <select class="form-control" name="Client1" id="Client1">
+                    <select class="form-control" name="client5" id="client1">
                         <option value="0"></option>
                         @foreach($clients as $client)
                             <option value="{{$client->id}}">{{$client->user->getLabel()}}</option>
