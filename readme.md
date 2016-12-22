@@ -12,18 +12,25 @@ Par Alain Pichonnat
 2. lancer la command suivante dans le dossier du projet:
 ```
 composer update
+
+composer install
 ```
-3. Puis une fois cela fait, vous pouvez lancer la commande suivante:
+3. Vous devez regenerer une clé pour l'application (pour laravel)
+```
+php artisan key:generate
+```
+
+4. Puis une fois cela fait, vous pouvez lancer la commande suivante:
 ```
 php artisan migrate 
 ```
 
-4. Puis pour être sur que tout est juste du coter de la base de donnée entré la commande suivante:
+5. Puis pour être sur que tout est juste du coter de la base de donnée entré la commande suivante:
 ```
 php artisan migrate:refresh --seed
 ```
 
-5. Si vous ne possedez pas de serveur web il vous suffie d'entrer cette commande :
+6. Si vous ne possedez pas de serveur web il vous suffie d'entrer cette commande :
 ```
 php artisan serve
 ```
