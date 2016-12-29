@@ -9,6 +9,7 @@ Par Alain Pichonnat
 
 ## Installation
 1.Cloné le projet depuis dit à cette adresse : https://github.com/apichonnat/Project_RIA2.git
+
 2.lancer la command suivante dans le dossier du projet:
 ```
 composer update
