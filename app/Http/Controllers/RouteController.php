@@ -6,14 +6,19 @@ use Illuminate\Http\Request;
 use App\Models\Driver;
 use App\Models\Customers;
 
+use App\Helpers\CrossingPoint;
+use App\Helpers\GeocodeApi;
+use App\Helpers\GoogleMatrixApi;
+
 class RouteController extends Controller
 {
 
     public function route(Request $request)
     {
-        $matrixKey = "AIzaSyAU0ICqkBTdOR5WWaQp78F5QuRSU_SxS94";
+        $matrixKey = "AIzaSyBrZwh2t9XNCUw_jrZGmbyOb9C-mRkA8b8";
         $driver = Driver::find($request->input('driver'));
         $clients = [];
+        $crossingPoints = [];
 
         array_push($clients, $request->input('client1') == 0 ? null : Customers::find($request->input('client1')));
         array_push($clients, $request->input('client2') == 0 ? null : Customers::find($request->input('client2')));
@@ -25,8 +30,7 @@ class RouteController extends Controller
         {
             if ($client != null)
             {
-                $coordinated = $this->getCoordinatedWithAddress($client->street, $client->street_number, $client->city, $client->npa, $matrixKey);
-
+                $coordinated = GeocodeApi::getCoordinatedWithAddress($client->street, $client->street_number, $client->city, $client->npa, $matrixKey);
                 if ($coordinated->status != "OK")
                 {
                     echo  "une erreur c'est produite, l'adresse entrée n'a pas été trouvée";
@@ -34,26 +38,17 @@ class RouteController extends Controller
                 }
                 else
                 {
-                    print_r($client->user->id);
-                    print_r("<br>");
-                    print_r($coordinated->results[0]->geometry->location);
-                    print_r("<br>");
-
+                    $object = $coordinated->results[0]->geometry->location;
+                    $point = new CrossingPoint($client->user->id, $object->lat, $object->lng);
+                    array_push($crossingPoints, $point);
                 }
 
             }
         }
+        
+
+        var_dump(GoogleMatrixApi::calculatedDistance($crossingPoints[0]->getLat(), $crossingPoints[0]->getLng(), $crossingPoints[1]->getLat(), $crossingPoints[1]->getLng(), $matrixKey));
+
+
     }
-
-
-    public function getCoordinatedWithAddress($street, $street_number, $city, $npa, $key)
-    {
-        $url = "https://maps.googleapis.com/maps/api/geocode/json?address=".$street." ".$street_number.", ".$city." ,".$npa."&key=".$key;
-        $url = str_replace(" ", "+", $url);
-
-        $response = file_get_contents($url);
-        return json_decode($response);
-    }
-
-
 }
