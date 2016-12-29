@@ -18,6 +18,7 @@ class CreateCustomersTable extends Migration
             $table->string('street');
             $table->integer('street_number');
             $table->string('city');
+            $table->integer('npa');
             $table->string('country');
             $table->timestamps();
         });

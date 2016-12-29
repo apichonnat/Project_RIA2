@@ -13,41 +13,46 @@ class CustomersData extends Seeder
     {
         DB::table('customers')->insert([
             'user_id' => 2,
-            'street' => "ch des valve",
-            'street_number' => 33,
-            'city' => "Fribourg",
+            'street' => "chemin des Halles",
+            'street_number' => 3,
+            'city' => "Moudon",
+            'npa' => 1510,
             'country' => "Suisse"
         ]);
 
         DB::table('customers')->insert([
             'user_id' => 3,
-            'street' => "rue des voitures",
-            'street_number' => 22,
-            'city' => "Lausanne",
+            'street' => "Rue Centrale",
+            'street_number' => 55,
+            'city' => "Bienne",
+            'npa' => 2502,
             'country' => "Suisse"
         ]);
 
         DB::table('customers')->insert([
             'user_id' => 4,
-            'street' => "rue de trump",
-            'street_number' => 83,
-            'city' => "Geneve",
+            'street' => "Avenue de l'Europe",
+            'street_number' => 20,
+            'city' => "Fribourg",
+            'npa' => 1700,
             'country' => "Suisse"
         ]);
 
         DB::table('customers')->insert([
             'user_id' => 5,
-            'street' => "ch des bourres",
-            'street_number' => 21,
-            'city' => "Sion",
+            'street' => "Chemin de Merdisel",
+            'street_number' => 4,
+            'city' => "Satigny",
+            'npa' => 1242,
             'country' => "Suisse"
         ]);
 
         DB::table('customers')->insert([
             'user_id' => 7,
-            'street' => "ch des chtis",
-            'street_number' => 7,
-            'city' => "Chatel-st-deni",
+            'street' => "Rue du Levant",
+            'street_number' => 99,
+            'city' => "Martigny",
+            'npa' => 1920,
             'country' => "Suisse"
         ]);
     }
