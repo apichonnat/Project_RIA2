@@ -19,6 +19,7 @@ class RouteController extends Controller
         $driver = Driver::find($request->input('driver'));
         $clients = [];
         $crossingPoints = [];
+        $alltrajets = [];
 
         array_push($clients, $request->input('client1') == 0 ? null : Customers::find($request->input('client1')));
         array_push($clients, $request->input('client2') == 0 ? null : Customers::find($request->input('client2')));
@@ -45,9 +46,17 @@ class RouteController extends Controller
 
             }
         }
-        
+        for ($i = 0; $i < count($crossingPoints); $i++)
+        {
+            for ($j = $i+1; $j < count($crossingPoints); $j++)
+            {
+                $value = GoogleMatrixApi::calculatedDistance($crossingPoints[$i]->getLat(), $crossingPoints[$i]->getLng(), $crossingPoints[$j]->getLat(), $crossingPoints[$j]->getLng(), $matrixKey);
+                array_push($alltrajets, $value);
+            }
+        }
 
-        var_dump(GoogleMatrixApi::calculatedDistance($crossingPoints[0]->getLat(), $crossingPoints[0]->getLng(), $crossingPoints[1]->getLat(), $crossingPoints[1]->getLng(), $matrixKey));
+
+        var_dump($alltrajets);
 
 
     }
