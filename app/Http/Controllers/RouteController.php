@@ -9,6 +9,7 @@ use App\Models\Customers;
 use App\Helpers\CrossingPoint;
 use App\Helpers\GeocodeApi;
 use App\Helpers\GoogleMatrixApi;
+use App\Helpers\CalculatingPaths;
 
 class RouteController extends Controller
 {
@@ -21,7 +22,7 @@ class RouteController extends Controller
         $crossingPoints = [];
         $alltrajets = [];
 
-        array_push($clients, $request->input('client1') == 0 ? null : Customers::find($request->input('client1')));
+        array_push($clients, $request->input('startEnd') == 0 ? null : Customers::find($request->input('startEnd')));
         array_push($clients, $request->input('client2') == 0 ? null : Customers::find($request->input('client2')));
         array_push($clients, $request->input('client3') == 0 ? null : Customers::find($request->input('client3')));
         array_push($clients, $request->input('client4') == 0 ? null : Customers::find($request->input('client4')));
@@ -40,10 +41,9 @@ class RouteController extends Controller
                 else
                 {
                     $object = $coordinated->results[0]->geometry->location;
-                    $point = new CrossingPoint($client->user->id, $object->lat, $object->lng);
+                    $point = new CrossingPoint($client->id, $object->lat, $object->lng);
                     array_push($crossingPoints, $point);
                 }
-
             }
         }
         for ($i = 0; $i < count($crossingPoints); $i++)
@@ -51,12 +51,15 @@ class RouteController extends Controller
             for ($j = $i+1; $j < count($crossingPoints); $j++)
             {
                 $value = GoogleMatrixApi::calculatedDistance($crossingPoints[$i]->getLat(), $crossingPoints[$i]->getLng(), $crossingPoints[$j]->getLat(), $crossingPoints[$j]->getLng(), $matrixKey);
+                $key = $crossingPoints[$i]->getId().$crossingPoints[$j]->getId();
+                $value["start"] = $crossingPoints[$i]->getId();
+                $value["end"] = $crossingPoints[$j]->getId();
                 array_push($alltrajets, $value);
             }
         }
+        print_r($alltrajets);
 
-
-        var_dump($alltrajets);
+        $chemins = CalculatingPaths::calculated($alltrajets);
 
 
     }

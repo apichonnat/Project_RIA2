@@ -12,7 +12,10 @@ class GoogleMatrixApi
         $response = file_get_contents($url);
 
         $response = json_decode($response);
-        return $response->rows[0]->elements[0];
+        $tab["distance"] = $response->rows[0]->elements[0]->distance->value;
+        $tab["duration"] = $response->rows[0]->elements[0]->duration->value;
+        return $tab;
+//        return $response->rows[0]->elements[0];
     }
 
 }

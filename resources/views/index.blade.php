@@ -14,8 +14,8 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="Client1">Client 1</label>
-                    <select class="form-control" name="client1" id="client1">
+                    <label for="Client1">Point de départ</label>
+                    <select class="form-control" name="startEnd" id="startEnd">
                         <option value="0"></option>
                         @foreach($clients as $client)
                             <option value="{{$client->id}}">{{$client->user->getLabel()}}</option>
@@ -23,7 +23,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="Client1">Client 2</label>
+                    <label for="Client1">Client 1</label>
                     <select class="form-control" name="client2" id="client1">
                         <option value="0"></option>
                         @foreach($clients as $client)
@@ -32,7 +32,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="Client1">Client 3</label>
+                    <label for="Client1">Client 2</label>
                     <select class="form-control" name="client3" id="client1">
                         <option value="0"></option>
                         @foreach($clients as $client)
@@ -41,7 +41,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="Client1">Client 4</label>
+                    <label for="Client1">Client 3</label>
                     <select class="form-control" name="client4" id="client1">
                         <option value="0"></option>
                         @foreach($clients as $client)
@@ -50,7 +50,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="Client1">Client 5</label>
+                    <label for="Client1">Client 4</label>
                     <select class="form-control" name="client5" id="client1">
                         <option value="0"></option>
                         @foreach($clients as $client)

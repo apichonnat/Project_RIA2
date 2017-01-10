@@ -20,18 +20,26 @@ composer install
 ```
 php artisan key:generate
 ```
-
-4.Puis une fois cela fait créé une base de donnée sur votre serveur mysql du nom de "drivers", puis vous pouvez lancer la commande suivante:
+4.Modifier le fichier [.env.example] en [.env] et modifier ces lignes:
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=driver
+DB_USERNAME=root
+DB_PASSWORD=
+```
+5.Puis une fois cela fait créé une base de donnée sur votre serveur mysql du nom de "drivers", puis vous pouvez lancer la commande suivante:
 ```
 php artisan migrate 
 ```
 
-5.Puis pour être sur que tout est juste du coter de la base de donnée entré la commande suivante:
+6.Puis pour être sur que tout est juste du coter de la base de donnée entré la commande suivante:
 ```
 php artisan migrate:refresh --seed
 ```
 
-6.Si vous ne possedez pas de serveur web il vous suffie d'entrer cette commande :
+7.Si vous ne possedez pas de serveur web il vous suffie d'entrer cette commande :
 ```
 php artisan serve
 ```
