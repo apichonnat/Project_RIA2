@@ -23,10 +23,10 @@ class RouteController extends Controller
         $alltrajets = [];
 
         array_push($clients, $request->input('startEnd') == 0 ? null : Customers::find($request->input('startEnd')));
+        array_push($clients, $request->input('client1') == 0 ? null : Customers::find($request->input('client1')));
         array_push($clients, $request->input('client2') == 0 ? null : Customers::find($request->input('client2')));
         array_push($clients, $request->input('client3') == 0 ? null : Customers::find($request->input('client3')));
         array_push($clients, $request->input('client4') == 0 ? null : Customers::find($request->input('client4')));
-        array_push($clients, $request->input('client5') == 0 ? null : Customers::find($request->input('client5')));
 
         $startEnd = $clients[0]->id;
 
@@ -73,7 +73,18 @@ class RouteController extends Controller
         }
 
         $fastestRoute = CalculatingPaths::calculatedTrajects($trajects, $alltrajets);
+        $return = [];
+        foreach ($fastestRoute["traject"] as $traject)
+        {
+            $tab["lastName"] = Customers::find($traject)->user->last_name;
+            $tab["firstName"] = Customers::find($traject)->user->first_name;
+            $tab["address"] = Customers::find($traject)->street." ".Customers::find($traject)->street_number;
+            $tab["city"] = Customers::find($traject)->city." ".Customers::find($traject)->npa;
 
-        print_r($fastestRoute);
+            array_push($return, $tab);
+        }
+
+        return json_encode($return);
+//        print_r($fastestRoute);
     }
 }

@@ -1,8 +1,9 @@
 <html>
     <head>
-        <title>Auth0 Sample</title>
+        <title>Projet driver</title>
+        <link rel="icon" href="{{ URL::asset('img/camion.png') }}">
+        <script src="{{ URL::asset('js/jquery-3.1.1.js') }}"></script>
         <link href="https://cdn.auth0.com/styleguide/4.8.10/index.min.css" rel="stylesheet" />
-        <link href="css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
         <header class="site-header">
@@ -20,8 +21,6 @@
                             @if(!$isLoggedIn)
                                 <li><a href="{{ route('login') }}" class="signin-button login">Login</a></li>
                             @else
-
-
                                 <li><a href="{{ route('logout') }}" class="signin-button login">Logout</a></li>
                             @endif
                         </ul>
@@ -31,8 +30,8 @@
         </header>
 
     <div class="container">
-
         @yield('content')
     </div>
+
     </body>
 </html>
