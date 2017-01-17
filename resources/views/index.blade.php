@@ -59,7 +59,6 @@
                     </select>
                 </div>
                 <button type="button" onclick="getRoute();" class="btn btn-default">Confirmation de la tournée</button>
-                {{--<button type="submit" class="btn btn-default">Confirmation de la tournée</button>--}}
             </form>
         </div>
         <div class="col-md-8" id="response"></div>
