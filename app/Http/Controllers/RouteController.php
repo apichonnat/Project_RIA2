@@ -28,6 +28,8 @@ class RouteController extends Controller
         array_push($clients, $request->input('client4') == 0 ? null : Customers::find($request->input('client4')));
         array_push($clients, $request->input('client5') == 0 ? null : Customers::find($request->input('client5')));
 
+        $startEnd = $clients[0]->id;
+
         foreach ($clients as $client)
         {
             if ($client != null)
@@ -54,13 +56,24 @@ class RouteController extends Controller
                 $key = $crossingPoints[$i]->getId().$crossingPoints[$j]->getId();
                 $value["start"] = $crossingPoints[$i]->getId();
                 $value["end"] = $crossingPoints[$j]->getId();
-                array_push($alltrajets, $value);
+                $alltrajets[$key] = $value;
+//                array_push($alltrajets, $value);
             }
         }
-        print_r($alltrajets);
 
-        $chemins = CalculatingPaths::calculated($alltrajets);
+        $point = array_values(array_unique(str_split(implode(array_keys($alltrajets)))));
+        array_shift($point);
+        $chemins = CalculatingPaths::calculated($point);
 
+        foreach ($chemins as $chemin)
+        {
+            array_unshift($chemin, $startEnd);
+            array_push($chemin, $startEnd);
+            $trajects[] = $chemin;
+        }
 
+        $fastestRoute = CalculatingPaths::calculatedTrajects($trajects, $alltrajets);
+
+        print_r($fastestRoute);
     }
 }
