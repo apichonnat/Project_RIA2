@@ -17,7 +17,9 @@ class RouteController extends Controller
     public function route(Request $request)
     {
         $matrixKey = "AIzaSyBrZwh2t9XNCUw_jrZGmbyOb9C-mRkA8b8";
+        $apiKeySms = "e3w1i4p4zVmtY4eKP7DodsNaysnsrGep";
         $driver = Driver::find($request->input('driver'));
+
         $clients = [];
         $crossingPoints = [];
         $alltrajets = [];
@@ -74,6 +76,8 @@ class RouteController extends Controller
 
         $fastestRoute = CalculatingPaths::calculatedTrajects($trajects, $alltrajets);
         $return = [];
+        $sms = [];
+
         foreach ($fastestRoute["traject"] as $traject)
         {
             $tab["lastName"] = Customers::find($traject)->user->last_name;
@@ -81,8 +85,12 @@ class RouteController extends Controller
             $tab["address"] = Customers::find($traject)->street." ".Customers::find($traject)->street_number;
             $tab["city"] = Customers::find($traject)->city." ".Customers::find($traject)->npa;
 
+            $val["firstName"] = Customers::find($traject)->user->first_name;
+            $val["lastName"] = Customers::find($traject)->user->last_name;
+            array_push($sms, $val);
             array_push($return, $tab);
         }
+
 
         return json_encode($return);
 //        print_r($fastestRoute);

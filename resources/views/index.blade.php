@@ -65,7 +65,6 @@
     </div>
     <script>
         function getRoute() {
-            console.log($);
             $.ajax({
                 url: $('#form').attr('action'),
                 type: $('#form').attr('method'),
@@ -73,7 +72,7 @@
                 dataType: 'json', // JSON
                 success: function(json)
                 {
-                    $('#response').html("");
+//                    $('#response').html("Distance total ="+ json['DistanceTotal']);
                     $.each(json, function (index, value)
                     {
                         $('#response').append(value["firstName"]+"<br>");
@@ -82,6 +81,9 @@
                         $('#response').append(value["city"]+"<br><br>");
                     });
 
+                },
+                error: function () {
+                    
                 }
             });
         }
