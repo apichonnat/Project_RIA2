@@ -11,8 +11,9 @@ namespace App\Helpers;
 
 class smsApi
 {
-    public static function sendSms($message)
+    public static function sendSms($number, $message)
     {
+        $apiKeySms = "e3w1i4p4zVmtY4eKP7DodsNaysnsrGep";
 
     }
 }

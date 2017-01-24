@@ -17,7 +17,7 @@ class RouteController extends Controller
     public function route(Request $request)
     {
         $matrixKey = "AIzaSyBrZwh2t9XNCUw_jrZGmbyOb9C-mRkA8b8";
-        $apiKeySms = "e3w1i4p4zVmtY4eKP7DodsNaysnsrGep";
+       
         $driver = Driver::find($request->input('driver'));
 
         $clients = [];
