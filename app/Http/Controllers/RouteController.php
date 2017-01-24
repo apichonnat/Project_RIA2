@@ -96,6 +96,5 @@ class RouteController extends Controller
         if ($test == "ok") return json_encode($return);
 
         return $test;
-//        print_r($fastestRoute);
     }
 }

@@ -14,7 +14,7 @@ class UsersData extends Seeder
         DB::table('users')->insert([
             'first_name' => "Alain",
             'last_name' => "Pichonnat",
-            'phone_number' => "0797826515",
+            'phone_number' => "797826515",
             'mail' => "alain.pichonnat@cpnv.ch",
         ]);
         DB::table('users')->insert([
@@ -42,10 +42,10 @@ class UsersData extends Seeder
             'mail' => "christophe.kalman@cpnv.ch",
         ]);
         DB::table('users')->insert([
-            'first_name' => "Yves",
-            'last_name' => "Pichonnat",
-            'phone_number' => "0793571880",
-            'mail' => "y.pichonnat@bluewin.ch",
+            'first_name' => "Xavier",
+            'last_name' => "Carrel",
+            'phone_number' => "your phone",
+            'mail' => "blabla@cpnv.ch.ch",
         ]);
         DB::table('users')->insert([
             'first_name' => "Nolan  ",
