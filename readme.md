@@ -53,17 +53,17 @@ Ce projet à été concu pour pouvoir gérer les tournées d'un chauffeur en met
 le logiciel calcule automatiquement le trajet le plus cour et l'envoie au chauffeur automatiquement par sms.
 
 ### Les APIs
-1. Auth0.
+1.Auth0.
 
 j'utilise cette api pour authentifier les personnes qui utilise cette api
 Cette API me permet de faire un systeme de connexion simple sans avoir besoin de gerer tout le système en back end
 
-2. GoogleMatrix et GeoCode
+2.GoogleMatrix et GeoCode
 
 GeoCode n'est en soit pas nécessaire mais j'ai prefer utiliser ceci pour transformer mes addresses en coordonnée
 puis apres je calcule toutes les distance entres les clients.
 
-3. smsApi
+3.smsApi
 
 cette api permet simplement d'envoyer un sms via l'application, se qui me permet d'envoyer le message au chauffeur
 séléctionner, la tournée qu'il doit faire.
@@ -75,15 +75,15 @@ puis une fois connecté, vous acceder a la page principal du programme
 entré
 1. Séléctionné le nom du chauffeur(scelui qui va recevoir le sms)
 2. séléctionné le lieu de départ puis les clients,
-vous n'etes pas obliger de metre tout les clients
+vous n'etes pas obliger de mettre tout les clients
 3. cliquer sur le bouton "confirmer la tournée"
 4. Selon le nombre de client le programme peut prendre plus ou moin de temps pour faire le calcule
 normalement au maximum 5 sec.
 
-5. l'affichage dans l'ordre des clients avec leur addresse se fait sur la page principal, en plus un sms est envoiyer
+5. l'affichage dans l'ordre des clients avec leur addresse se fait sur la page principal, en plus un sms est envoyé
 au chauffeur avec les noms des clients dans l'ordre également
 
 ###Erreur
 
 Si des erreur viennt à apparaitre, elle ne seront pas
-visible étant donnée que le système à été code en ajax, mais dans la console elles seront visible
+visible étant donné que le système à été code en ajax, mais dans la console elles seront visible
