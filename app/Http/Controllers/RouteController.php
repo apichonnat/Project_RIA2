@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\smsApi;
 use Illuminate\Http\Request;
 use App\Models\Driver;
 use App\Models\Customers;
@@ -17,7 +18,7 @@ class RouteController extends Controller
     public function route(Request $request)
     {
         $matrixKey = "AIzaSyBrZwh2t9XNCUw_jrZGmbyOb9C-mRkA8b8";
-       
+
         $driver = Driver::find($request->input('driver'));
 
         $clients = [];
@@ -91,8 +92,10 @@ class RouteController extends Controller
             array_push($return, $tab);
         }
 
+        $test = smsApi::sendSms($driver->user->phone_number, $sms);
+        if ($test == "ok") return json_encode($return);
 
-        return json_encode($return);
+        return $test;
 //        print_r($fastestRoute);
     }
 }
